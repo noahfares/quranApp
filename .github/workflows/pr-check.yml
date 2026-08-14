@@ -1,0 +1,80 @@
+name: PR Check
+
+# Fast verification on every pull request. Target: under 2 minutes.
+# Policy: docs/decisions/0005-ci-policy.md
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: pr-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FLUTTER_VERSION: "3.44.9"
+
+jobs:
+  check:
+    name: Format, analyze, layering, test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Verify formatting
+        run: dart format --set-exit-if-changed .
+
+      - name: Analyze
+        run: flutter analyze --fatal-infos
+
+      - name: Verify architectural layering
+        run: dart run tool/verify_layering.dart
+
+      - name: Verify asset checksums
+        run: dart run tool/verify_checksums.dart
+
+      - name: Test
+        run: flutter test --exclude-tags=golden
+
+  # Catches iOS compilation drift and dependency breakage continuously, so the
+  # iOS target does not silently rot between now and Phase 11. This proves the
+  # app BUILDS, not that it behaves — audio sessions, notifications, and file
+  # storage still require a physical device (ADR 0007).
+  #
+  # macOS runner minutes are free on public repositories and billed at 10x on
+  # private ones. Keep this repository public, or drop this job.
+  ios-build:
+    name: iOS build (no signing)
+    runs-on: macos-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Build iOS
+        run: flutter build ios --release --no-codesign

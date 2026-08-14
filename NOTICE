@@ -1,0 +1,47 @@
+Hifz — Quran Memorization App
+Copyright 2026 the Hifz app contributors
+
+This product includes software developed under the Apache License, Version 2.0.
+See LICENSE for the full text.
+
+================================================================================
+QURANIC CONTENT AND MUSHAF ASSETS
+================================================================================
+
+The Quranic text, mushaf page imagery, glyph fonts, and coordinate databases
+bundled with or downloaded by this application are NOT covered by the Apache
+License. They remain the property of their respective publishers and are used
+under their own terms.
+
+Each asset's source, version, licence, and required attribution is recorded in
+assets/ATTRIBUTION.md and reproduced verbatim in assets/licences/. That
+attribution is displayed in the application's About screen, which is a licence
+obligation and must not be removed.
+
+Expected sources, to be verified before bundling (see docs/02-data-sources.md
+and Phase 0 Batch 0.4):
+
+  - Arabic Quran text — Tanzil.net / King Fahd Glorious Quran Printing Complex
+  - Mushaf page images — the quran.com-images project
+  - Ayah and word coordinate data — the ayahinfo databases
+  - QPC glyph fonts — King Fahd Glorious Quran Printing Complex, via the
+    Quran Foundation
+  - Recitation audio — everyayah.com, the Islamic Network CDN, and the
+    Quran Foundation CDN (streamed, not bundled)
+  - Translations — the Quran Foundation API (downloaded on request)
+
+No Quranic text in this application is modified in any way. Source files are
+shipped byte-identical and verified by SHA-256 checksum at build time.
+
+================================================================================
+THIRD-PARTY SOFTWARE
+================================================================================
+
+This application depends on open source packages, each under its own licence.
+The complete list with licences is generated from pubspec.lock and shown in the
+About screen. No GPL-licensed dependency is used.
+
+================================================================================
+
+This application is provided free of charge with no revenue of any kind, as
+sadaqah jariyah.
