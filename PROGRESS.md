@@ -11,8 +11,8 @@ If this file disagrees with your memory, this file wins.
 |---|---|
 | **Current version** | `v0.0.1` (pre-development) |
 | **Current phase** | Phase 0 — Foundation & Toolchain |
-| **Current batch** | Batch 0.3 — not started |
-| **Next action** | Batch 0.3 — design token system and theming. See `docs/phases/phase-0-foundation.md` |
+| **Current batch** | Batch 0.4 — not started |
+| **Next action** | Batch 0.4 — asset licence verification and pipeline. See `docs/phases/phase-0-foundation.md` |
 | **Last updated** | 2026-08-18 |
 
 ## Phase ledger
@@ -42,7 +42,8 @@ Append one row per completed batch. Newest at the bottom.
 |---|---|---|---|
 | — | — | Project skeleton authored | — |
 | 2026-08-18 | 0.1 | Flutter project created (`com.noahfares.hifz`, display name "Hifz"); dependency set pinned exact per spec; `analysis_options.yaml`, Android min/target SDK + core library desugaring configured; `FLUTTER_VERSION` in both workflows updated to `3.47.0` (the `3.44.9` pin from the skeleton commit could not resolve `riverpod_generator` against its own bundled `flutter_test` — see blocker below). `flutter analyze`, `dart format --set-exit-if-changed`, `flutter test`, and `tool/verify_layering.dart` all pass. **Not yet verified on a real Android device** — this sandbox has no Android SDK and `dl.google.com` is blocked by org egress policy. | `f6d4596` |
-| 2026-08-18 | 0.2 | Full `lib/` and `test/` tree scaffolded per `docs/01-architecture.md` §2, with `.gitkeep` placeholders in directories with no content yet. Added `core/clock.dart` (`Clock`/`SystemClock`/`FakeClock`) and `core/result.dart` (`Result`/`Ok`/`Err`), both with unit tests. `tool/verify_layering.dart` already existed from the skeleton commit; proved it against all 5 violation types (Flutter import in `domain/`, `data`/`features` import in `ui/`, cross-feature import, hardcoded `Colors.` in `features/`, stray `DateTime.now()`) by committing each violation locally, confirming the checker failed with the right message, then reverting. `flutter analyze`, `dart format --set-exit-if-changed`, `flutter test`, and the layering checker all pass. | (pending push) |
+| 2026-08-18 | 0.2 | Full `lib/` and `test/` tree scaffolded per `docs/01-architecture.md` §2, with `.gitkeep` placeholders in directories with no content yet. Added `core/clock.dart` (`Clock`/`SystemClock`/`FakeClock`) and `core/result.dart` (`Result`/`Ok`/`Err`), both with unit tests. `tool/verify_layering.dart` already existed from the skeleton commit; proved it against all 5 violation types (Flutter import in `domain/`, `data`/`features` import in `ui/`, cross-feature import, hardcoded `Colors.` in `features/`, stray `DateTime.now()`) by committing each violation locally, confirming the checker failed with the right message, then reverting. `flutter analyze`, `dart format --set-exit-if-changed`, `flutter test`, and the layering checker all pass. | `d7982cb` |
+| 2026-08-18 | 0.3 | Design tokens: `ui/tokens/{spacing,radii,durations,typography}.dart`, all named semantically. `ui/theme/color_schemes.dart` — light/dark/sepia `ColorScheme`s seeded from one accent colour (a deep green, `0xFF0B6E4F` — no accent was specified anywhere in the docs, so this is a placeholder pick, easy to swap by changing one constant). `ui/theme/mushaf_theme.dart` — a `ThemeExtension<MushafTheme>` carrying page background, highlight colour/opacity, mask colour, the four FSRS grade colours (Again/Hard/Good/Easy per `HFZ-10`), and the five page-status colours (untouched/learning/consolidating/maintained/lapsed per the brief's `status` enum). `ui/theme/app_theme.dart` assembles all three into `ThemeData` via `AppThemeMode`. Added a debug-only `ThemePreviewScreen` (tabbed, one tab per theme) and wired `lib/main.dart` to show it as the temporary home screen until Batch 0.7 builds real routing. `flutter analyze`, `dart format --set-exit-if-changed`, `flutter test`, and the layering checker all pass. | `pending` |
 
 ## Open blockers
 
