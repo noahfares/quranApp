@@ -4,13 +4,13 @@ This screen lists every third-party source Hifz uses or intends to use, and the
 verification status of each. Per docs/02-data-sources.md, nothing is bundled until its
 row reads verified — see the status column below.
 
-**No Quran text, page image, font, or coordinate database is bundled in this build.**
-Research so far (Batch 0.4) is recorded per-source below; verification is not yet
-complete for any of them. See `PROGRESS.md` for the full writeup and open blockers.
+**No Quran text, page image, font, or coordinate database is bundled in this build yet.**
+Research so far (Batch 0.4) is recorded per-source below. See `PROGRESS.md` for the
+full writeup and open blockers.
 
 | Source | Used for | Status |
 |---|---|---|
-| Tanzil.net | Arabic Quran text (Uthmani) | Researched, not verified — see note |
+| Tanzil.net | Arabic Quran text (Uthmani) | **Licence verified** — text file not yet bundled, see note |
 | King Fahd Glorious Qur'an Printing Complex (KFGQPC) | Mushaf page fonts/images | Researched, not verified — see note |
 | `quran/quran.com-images` (GitHub) | Page image generation | Not a data source — it is a build toolchain, not a downloadable image set (see note) |
 | `quran/ayah-detection` (GitHub) | Ayah coordinate detection | Not a data source — it is a build toolchain, not a downloadable database (see note) |
@@ -20,13 +20,14 @@ complete for any of them. See `PROGRESS.md` for the full writeup and open blocke
 
 ## Notes
 
-**Tanzil.net Arabic text.** Publicly documented (via secondary sources — see
-`PROGRESS.md`) as distributed under a Tanzil-specific licence resembling
-CC BY 3.0: verbatim copying is permitted, modification is not, and use requires
-attribution to Tanzil.net with a link back to tanzil.net. This session could not reach
-tanzil.net directly (blocked by this environment's network egress policy) to fetch and
-verify the licence text verbatim, so it is not yet copied into `assets/licences/` and no
-text file is bundled.
+**Tanzil.net Arabic text — verified.** The licence text (Creative Commons Attribution
+3.0) was fetched from tanzil.net/docs/text_license by the project owner and copied
+verbatim into `assets/licences/tanzil-text.txt`. Terms: verbatim copying permitted,
+modification is not, and use requires attribution to Tanzil Project with a link back to
+tanzil.net; the copyright notice must be reproduced in derived files. The actual text
+file (e.g. `quran-uthmani.txt` from tanzil.net/download) still needs to be downloaded
+and added to `assets/quran/` before it's bundled and checksummed — see
+`PROGRESS.md` blocker #5.
 
 **KFGQPC fonts and mushaf page imagery.** Publicly documented (via secondary sources)
 as free to use, copy, and distribute, with no modification, reverse engineering, or
