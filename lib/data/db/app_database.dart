@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'tables/settings_table.dart';
+import '../platform/paths.dart';
 
 part 'app_database.g.dart';
 
@@ -32,3 +34,12 @@ class AppDatabase extends _$AppDatabase {
   // `onUpgrade` case here rather than editing `onCreate`, so a fresh
   // install and an upgraded install always converge on the same schema.
 }
+
+/// Opens [AppDatabase] at its real on-disk location. Closed automatically
+/// when the provider is disposed.
+final appDatabaseProvider = FutureProvider<AppDatabase>((ref) async {
+  final file = await AppPaths.appDatabaseFile();
+  final db = AppDatabase.at(file);
+  ref.onDispose(db.close);
+  return db;
+});
