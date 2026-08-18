@@ -18,6 +18,9 @@ analyzer:
     - windows/**
     - macos/**
     - linux/**
+    # Generated code is never hand-fixed — see docs/03-conventions.md.
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
 
 linter:
   # The lint rules applied to this project can be customized in the
