@@ -82,14 +82,14 @@ Iterable<_Violation> _check(String path, String line, int lineNo) sync* {
   // feature name can be read off it.
   final feature = RegExp(r'/features/([^/]+)/').firstMatch(path)?.group(1);
   if (feature != null) {
-    final uri = RegExp(
-      '''import\\s+['"]([^'"]+)['"]''',
-    ).firstMatch(line)?.group(1);
+    final uri = RegExp('''import\\s+['"]([^'"]+)['"]''')
+        .firstMatch(line)
+        ?.group(1);
     if (uri != null) {
       final resolved = _resolveImport(path, uri);
-      final imported = RegExp(
-        r'/features/([^/]+)/',
-      ).firstMatch(resolved ?? '')?.group(1);
+      final imported = RegExp(r'/features/([^/]+)/')
+          .firstMatch(resolved ?? '')
+          ?.group(1);
       if (imported != null && imported != feature) {
         yield _Violation(
           path,
