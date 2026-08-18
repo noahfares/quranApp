@@ -13,5 +13,5 @@ not an entry; "Manzil reviews now group adjacent pages into a single session" is
 
 ## [Unreleased]
 
-Project skeleton, roadmap, architecture, and CI pipeline authored. No application code
-yet — Phase 0 has not started.
+Phase 0 (Foundation & Toolchain) in progress — no user-facing release yet. Nothing to
+enter here until the phase closes; see `PROGRESS.md` for current status.
