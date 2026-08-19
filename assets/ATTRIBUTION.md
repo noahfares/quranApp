@@ -31,9 +31,16 @@ and added to `assets/quran/` before it's bundled and checksummed — see
 
 **KFGQPC fonts and mushaf page imagery.** Publicly documented (via secondary sources)
 as free to use, copy, and distribute, with no modification, reverse engineering, or
-resale permitted, copyright retained by KFGQPC. This session could not reach
-qul.tarteel.ai directly (blocked by this environment's network egress policy) to fetch
-and verify the licence text verbatim.
+resale permitted, copyright retained by KFGQPC. A prior session could not reach
+qul.tarteel.ai directly (blocked by that environment's network egress policy). A later
+session (2026-08-18) reached it via a browser tool and checked the two QUL resource
+pages docs/02-data-sources.md points at — KFGQPC V2 layout
+(`qul.tarteel.ai/resources/mushaf-layout/10`) and QPC V2 Font
+(`qul.tarteel.ai/resources/font/249`) — plus Credits, Terms of Use, FAQ, and linked docs
+pages. Neither resource page (nor anything linked from it) states a licence,
+redistribution terms, or attribution wording, so nothing was downloaded. Filed
+[TarteelAI/quranic-universal-library#729](https://github.com/TarteelAI/quranic-universal-library/issues/729)
+asking QUL to clarify; still unverified pending a response.
 
 **`quran/quran.com-images` and `quran/ayah-detection`.** docs/02-data-sources.md lists
 these as the bundled sources for page images and the ayah coordinate database. Both
