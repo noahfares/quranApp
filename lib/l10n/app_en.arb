@@ -1,0 +1,60 @@
+{
+  "@@locale": "en",
+  "appTitle": "Hifz",
+  "@appTitle": {
+    "description": "The application's display name."
+  },
+  "navHome": "Home",
+  "@navHome": {
+    "description": "Bottom navigation tab label for the home screen."
+  },
+  "navReader": "Reader",
+  "@navReader": {
+    "description": "Bottom navigation tab label for the mushaf reader screen."
+  },
+  "navProgress": "Progress",
+  "@navProgress": {
+    "description": "Bottom navigation tab label for the progress screen."
+  },
+  "navSettings": "Settings",
+  "@navSettings": {
+    "description": "Bottom navigation tab label for the settings screen."
+  },
+  "settingsAbout": "About",
+  "@settingsAbout": {
+    "description": "Label for the row that opens the About screen from Settings."
+  },
+  "settingsTheme": "Theme",
+  "@settingsTheme": {
+    "description": "Label for the theme-mode picker in Settings."
+  },
+  "themeLight": "Light",
+  "@themeLight": {
+    "description": "Light theme option label."
+  },
+  "themeDark": "Dark",
+  "@themeDark": {
+    "description": "Dark theme option label."
+  },
+  "themeSepia": "Sepia",
+  "@themeSepia": {
+    "description": "Sepia theme option label."
+  },
+  "errorRecoveryTitle": "Something went wrong",
+  "@errorRecoveryTitle": {
+    "description": "Title on the global error-recovery screen."
+  },
+  "errorRecoveryBody": "The app hit an unexpected error and couldn't continue. Restarting usually fixes this.",
+  "@errorRecoveryBody": {
+    "description": "Body text on the global error-recovery screen."
+  },
+  "placeholderScreenBody": "{screenName} — coming soon.",
+  "@placeholderScreenBody": {
+    "description": "Body text for an empty placeholder feature screen.",
+    "placeholders": {
+      "screenName": {
+        "type": "String"
+      }
+    }
+  }
+}
